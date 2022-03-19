@@ -1,0 +1,110 @@
+#
+# wm independent hotkeys
+#
+
+# terminal emulator
+super + Return
+	alacritty
+
+# program launcher
+super + d
+	dmenu_run
+
+# make sxhkd reload its configuration files:
+super + Escape
+	pkill -USR1 -x sxhkd
+
+#
+# berry hotkeys
+#
+
+# Apps
+super + shift + w
+    firefox
+
+super + shift + d
+    discord
+
+super + shift + m
+    spotify
+
+# Emoji
+super + control + space
+    /usr/bin/splatmoji copy
+
+# Multimedia
+
+# Volume control
+XF86AudioRaiseVolume
+    pactl set-sink-volume @DEFAULT_SINK@ +5% && notify-send "Volume Up" "Volume increase 5%"
+XF86AudioLowerVolume
+    pactl set-sink-volume @DEFAULT_SINK@ -5%  && notify-send "Volume Down" "Volume decrease 5%"
+XF86AudioMute
+    pactl set-sink-mute @DEFAULT_SINK@ toggle
+
+# Media Control 
+XF86AudioNext
+    playerctl next
+XF86AudioPrev
+    playerctl previous
+XF86AudioPlay
+    playerctl play-pause
+
+# Brigtness
+XF86MonBrightnessUp
+    xbacklight -inc 10
+XF86MonBrightnessDown
+    xbacklight -dec 10 && notify-send "Volume Down" "Volume decrease 10 %"
+
+# Screenshot
+Print
+    scrot 'Screenshot_%a-%d_%b_%y_%H.%M.png' -e 'mv $f ~/Pictures/Screenshots && sxiv -b ~/Pictures/Screenshots/$f && xclip -selection clipboard -target image/png -i ~/Pictures/Screenshots/$f'
+
+super + shift + s
+    notify-send "Suspending" "See you later" && systemctl suspend
+
+# Wifi
+super + F1
+    networkmanager_dmenu
+
+super + {h, j, k, l}
+    berryc window_move {-25 0, 0 25, 0 -25, 25 0}
+
+super + shift +  {h, j, k, l}
+    berryc window_resize {-25 0, 0 25, 0 -25, 25 0}
+
+super + {1-9}
+    berryc switch_workspace {0-9}
+
+super + shift + {1-9}
+    berryc send_to_workspace {0-9}
+
+super + m
+    berryc window_monocle
+
+super + f
+    berryc fullscreen_state
+
+super +  p
+    berryc snap_right
+
+super + o 
+    berryc snap_left
+
+super + n
+    berryc toggle_decorations
+
+super + Tab
+    berryc cycle_focus
+
+super + q
+    berryc window_close
+
+super + shift + {e}
+    berryc quit
+
+super + c
+    berryc window_center
+
+~button1
+    berryc pointer_focus
