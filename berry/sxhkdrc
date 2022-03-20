@@ -8,7 +8,7 @@ super + Return
 
 # program launcher
 super + d
-	dmenu_run
+	dmenu_run -l 20 -p "Run" -nb "#7ea6b0" -nf "#FFFFFF" -sb "#FFFFFF" -sf "#7ea6b0"
 
 # make sxhkd reload its configuration files:
 super + Escape
@@ -65,7 +65,7 @@ super + shift + s
 
 # Wifi
 super + F1
-    networkmanager_dmenu
+    networkmanager_dmenu -l 20 -p "Run" -nb "#7ea6b0" -nf "#FFFFFF" -sb "#FFFFFF" -sf "#7ea6b0"
 
 super + {h, j, k, l}
     berryc window_move {-25 0, 0 25, 0 -25, 25 0}
