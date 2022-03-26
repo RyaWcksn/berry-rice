@@ -14,6 +14,13 @@ super + d
 super + Escape
 	pkill -USR1 -x sxhkd
 
+# Shutdown
+super + Shift + Delete
+    shutdown now
+
+super + a
+    pkill -USR1 -x play
+
 #
 # berry hotkeys
 #
@@ -28,6 +35,9 @@ super + shift + d
 super + shift + m
     spotify
 
+super + F7
+    arandr
+
 # Emoji
 super + control + space
     /usr/bin/splatmoji copy
@@ -36,9 +46,9 @@ super + control + space
 
 # Volume control
 XF86AudioRaiseVolume
-    pactl set-sink-volume @DEFAULT_SINK@ +5% && notify-send "Volume Up" "Volume increase 5%"
+    pactl set-sink-volume @DEFAULT_SINK@ +5%
 XF86AudioLowerVolume
-    pactl set-sink-volume @DEFAULT_SINK@ -5%  && notify-send "Volume Down" "Volume decrease 5%"
+    pactl set-sink-volume @DEFAULT_SINK@ -5%
 XF86AudioMute
     pactl set-sink-mute @DEFAULT_SINK@ toggle
 
@@ -54,7 +64,7 @@ XF86AudioPlay
 XF86MonBrightnessUp
     xbacklight -inc 10
 XF86MonBrightnessDown
-    xbacklight -dec 10 && notify-send "Volume Down" "Volume decrease 10 %"
+    xbacklight -dec 10
 
 # Screenshot
 Print
@@ -72,6 +82,9 @@ super + {h, j, k, l}
 
 super + shift +  {h, j, k, l}
     berryc window_resize {-25 0, 0 25, 0 -25, 25 0}
+
+super + alt + space
+    berryc window_resize_absolute 500 500 && berryc window_center
 
 super + {1-9}
     berryc switch_workspace {0-9}
@@ -102,6 +115,9 @@ super + q
 
 super + shift + {e}
     berryc quit
+
+super + shift + r
+    $HOME/.config/berry/autostart
 
 super + c
     berryc window_center
