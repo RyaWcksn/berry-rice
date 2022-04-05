@@ -1,5 +1,5 @@
 #!/bin/bash
-alarm="$HOME/.config/berry/assets/niko niko nee.mp3"
+alarm="$HOME/.config/berry/assets/gundam_warning.mp3"
 
 # Notify when below this percentage
 warning_level=15
@@ -19,7 +19,7 @@ while true; do
   then
     play -q -v 0.40 "$alarm" &
     notify-send " Low battery: ${battery_level}% " \
-      " $USER-sama $HOSTNAME's battery running low " -i $HOME/Downloads/mayu.png -t 8000
+      " $USER-sama $HOSTNAME's battery running low " -i $HOME/.config/berry/assets/battery.png -t 8001
   fi
   
   sleep ${check_interval}m

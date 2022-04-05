@@ -2,18 +2,18 @@
 
 sxhkd -c $HOME/.config/berry/sxhkdrc &
 pulseaudio --start
-picom -f &
+picom --config ~/.config/berry/picom.conf &
 $HOME/.config/berry/scripts/low_batt.sh &
 
 feh --no-startup-id feh --bg-fill -Z /home/aya/Downloads/wallhaven-45kjv5_1920x1080.png \
 --bg-fill ~/Downloads/mayu.jpg &
 $HOME/.config/polybar/launch.sh
-notify-send "Welcome back $USER!" "Back using $HOSTNAME" -i $HOME/Downloads/mayu.png -t 1000
-ibus-daemon &
+notify-send "Welcome back $USER!" "Back using $HOSTNAME" -i $HOME/.config/berry/assets/greeting.png -t 10000
+ibus-daemon --xim &
 
 # Set decoration geometry
-berryc border_width       3
-berryc inner_border_width 3
+berryc border_width       0
+berryc inner_border_width 0
 berryc title_height       38
 berryc edge_gap           50 10 10 10
 
@@ -26,7 +26,23 @@ berryc text_focus_color    ffffff
 berryc text_unfocus_color  eeeeee
 
 # Other options
-berryc smart_place "true"
-berryc draw_text   "true"
-berryc edge_lock   "true"
-berryc set_font    "Dina-9"
+berryc smart_place  "true"
+berryc draw_text    "true"
+berryc edge_lock    "true"
+berryc set_font     "Dina-9"
+berryc decorate_new "true"
+berryc manage       Dialog|Toolbar|Menu|Splash|Utility
+berryc json_status  "true"
+berryc pointer_interval 0
+
+## Mornitor
+berryc save_monitor 1 0
+berryc save_monitor 2 0
+berryc save_monitor 3 0
+berryc save_monitor 4 0
+berryc save_monitor 5 0
+berryc save_monitor 6 1
+berryc save_monitor 7 1
+berryc save_monitor 8 1
+berryc save_monitor 9 1
+berryc save_monitor 0 1

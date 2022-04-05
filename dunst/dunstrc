@@ -12,6 +12,11 @@ progress_bar_frame_width = 0
 progress_bar_min_width = 150
 progress_bar_max_width = 300
 
+mouse_left_click = do_action
+mouse_middle_click = close_current
+mouse_right_click = close_all
+
+
 horizontal_padding = 32
 frame_width = 2
 sort = no

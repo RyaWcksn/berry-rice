@@ -38,9 +38,19 @@ super + shift + m
 super + F7
     arandr
 
+super + {F2, F3}
+    $HOME/.config/berry/scripts/{single, dual} && $HOME/.config/berry/autostart
+
 # Emoji
 super + control + space
-    /usr/bin/splatmoji copy
+    rofi -show emoji -theme ~/.config/rofi/spotlight.rasi
+
+super + space
+	rofi -show drun -show-icons -theme ~/.config/rofi/spotlight.rasi
+
+super + F4
+	rofi -show drun -show-icons -theme ~/.config/rofi/launchpad.rasi
+
 
 # Multimedia
 
@@ -68,8 +78,15 @@ XF86MonBrightnessDown
 
 # Screenshot
 Print
-    scrot 'Screenshot_%a-%d_%b_%y_%H.%M.png' -e 'mv $f ~/Pictures/Screenshots && sxiv -b ~/Pictures/Screenshots/$f && xclip -selection clipboard -target image/png -i ~/Pictures/Screenshots/$f'
+    $HOME/.config/berry/scripts/screenshot.sh all
 
+alt + Print
+    $HOME/.config/berry/scripts/screenshot.sh area
+
+control + Print
+    $HOME/.config/berry/scripts/screenshot.sh window
+
+# Suspend
 super + shift + s
     notify-send "Suspending" "See you later" && systemctl suspend
 
@@ -83,13 +100,13 @@ super + {h, j, k, l}
 super + shift +  {h, j, k, l}
     berryc window_resize {-25 0, 0 25, 0 -25, 25 0}
 
-super + alt + space
+super + shift + Return
     berryc window_resize_absolute 500 500 && berryc window_center
 
-super + {1-9}
+super + {0-9}
     berryc switch_workspace {0-9}
 
-super + shift + {1-9}
+super + shift + {0-9}
     berryc send_to_workspace {0-9}
 
 super + m
@@ -114,13 +131,16 @@ super + q
     berryc window_close
 
 super + shift + {e}
-    berryc quit
+    pkill -USR1 -x sxhkd && berryc quit
 
 super + shift + r
     $HOME/.config/berry/autostart
 
 super + c
     berryc window_center
+
+super + alt + l
+    betterlockscreen -l
 
 ~button1
     berryc pointer_focus
